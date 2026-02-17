@@ -1,0 +1,6 @@
+baseURL = 'https://rafa4comics.netlify.app/'
+languageCode = 'en-us'
+title = 'Rafa 4 Comics'
+[services]
+  [services.disqus]
+    shortname = 'rafa4comics'

@@ -1,0 +1,43 @@
+{{ define "main" }}
+<main>
+<article class="h-entry">
+  <header>
+    <h1 class="p-name">{{ .Title }}</h1>
+    {{ with .Date }}
+    <time class="dt-published" datetime="{{ .Format "2006-01-02T15:04:05Z07:00" }}">
+      {{ .Format "January 2, 2006" }}
+    </time>
+    {{ end }}
+  </header>
+
+  <figure class="comic-display">
+    {{ $image := .Resources.GetMatch "page*" }}
+    <img src="{{ $image }}"
+         alt="{{ .Params.alt_text | default .Title }}"
+         class="u-photo"
+         loading="eager">
+  </figure>
+
+  <nav class="comic-nav" aria-label="Comic navigation">
+    <div>
+    {{ if .PrevInSection }}
+      <a href="{{ .PrevInSection.Permalink }}" rel="prev">« Previous</a>
+    {{ end }}
+    </div>
+
+    <a href="../index.html">Archive</a>
+
+    <div>
+    {{ if .NextInSection }}
+      <a href="{{ .NextInSection.Permalink }}" rel="next">Next »</a>
+    {{ end }}
+    </div>
+  </nav>
+
+  {{ if .Params.comments }}
+  <footer>
+    {{ partial "disqus.html" . }}
+  </footer>
+  {{ end }}
+<main>
+{{ end }}

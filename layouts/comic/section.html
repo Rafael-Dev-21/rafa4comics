@@ -1,0 +1,35 @@
+{{ define "main" }}
+<section class="h-feed">
+  <h1>{{ .Title }}</h1>
+
+
+  <ol class="comic-list" style="list-style: none; padding: 0;">
+    {{ range .Pages }}
+    <li class="h-entry">
+      <article>
+        <h2>
+          <a href="{{ .RelPermalink }}" class="u-url p-name">{{ .Title }}</a>
+        </h2>
+        {{ if .Params.summary }}<p class="p-summary">{{ .Params.summary }}</p>{{ end }}
+      </article>
+    </li>
+    {{ end }}
+  </ol>
+
+  <nav class="comic-nav">
+    {{ if not .IsHome }}
+      <a href="{{ if .Parent }}{{ .Parent.RelPermalink }}{{ else }}/{{ end }}">Go Back</a>
+    {{ end }}
+    {{ if ne .Section "comic" }}
+      <a href="/comic">Comics Catalogue</a>
+    {{ end }}
+  </nav>
+
+  {{ if .Params.comments }}
+  <footer>
+    {{ partial "disqus.html" . }}
+  </footer>
+  {{ end }}
+
+</section>
+{{ end }}
