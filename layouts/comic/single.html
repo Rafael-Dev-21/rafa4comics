@@ -2,6 +2,21 @@
   <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="../index.xml">
 {{ end }}
 {{ define "main" }}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWorkSeries",
+    "name": "{{ .Parent.Title }}",
+    "author": {
+      "@type": "Person",
+      "name": "Rafael 04th"
+    },
+    "headline": "{{ .Title }}",
+    "image": "{{ ( .Resources.GetMatch "page*" ).Permalink }}",
+    "datePublished": "{{ .Date.Format "2006-01-02" }}",
+    "description": "{{ .Description | default .Summary }}"
+  }
+  </script>
 <main>
 <article class="h-entry">
   <header>
