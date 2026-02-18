@@ -15,7 +15,8 @@
     <meta property="og:url" content="{{ .Permalink }}">
     <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
     {{ $summary := .Summary | plainify | truncate 160 }}
-    <meta name="description" content="{{ $summary }}">
+    {{ $description := .Description | plainify }}
+    <meta name="description" content="{{ if .IsHome }}Rafael 4 Comics - Indie Sci-Fi/Fantasy Comics From a Brazilian Author{{ else }}{{ $description | default $summary }}{{ end }}">
     <meta property="og:description" content="{{ $summary }}">
 
     <link rel="profile" href="http://gmpg.org/xfn/11">
@@ -33,6 +34,8 @@ a { color: #00ffcc; text-decoration: none; border-bottom: 1px dotted transparent
 a:hover { border-bottom-color: #00ffcc; }
 footer { margin-top: 4rem; padding: 2rem 0; border-top: 1px solid #333; font-size: 0.9rem; }
 </style>
+
+    <meta name="google-site-verification" content="EhLlP5eAqwGihX9DZRwGECFJrUmv2NwhxN_EXh8po9w" />
   </head>
 
   <body>
