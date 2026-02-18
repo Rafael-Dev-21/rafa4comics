@@ -12,7 +12,9 @@
       "name": "Rafael 04th",
       "url": "{{ site.BaseURL }}"
     },
-    {{- with .Params.genres }}"genre": {{ . | jsonify }},{{ end }},
+    {{- with .Params.genres }}
+    "genre": {{ print (. | jsonify) }},
+    {{ end }}
     "isPartOf": {
       "@type": "ComicSeries",
       "name": "{{ .Parent.Title }}",
