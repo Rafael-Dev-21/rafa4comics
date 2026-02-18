@@ -15,9 +15,13 @@
 
   <figure class="comic-display">
     {{ $image := .Resources.GetMatch "page*" }}
-    <img src="{{ $image }}"
+    {{ $webp := $image.Process "webp" }}
+    <img src="{{ $webp.RelPermalink }}"
          alt="{{ .Params.alt_text | default .Title }}"
+         width="{{ $webp.Width }}"
+         height="{{ $webp.Height }}"
          class="u-photo"
+         fetchpriority="high"
          loading="eager">
   </figure>
 
@@ -39,9 +43,6 @@
 
   <footer>
     <a href="../index.xml" rel="alternate" type="application/xml+rss">Subscribe to RSS Feed</a>
-  {{ if .Params.comments }}
-    {{ partial "disqus.html" . }}
-  {{ end }}
   </footer>
 <main>
 {{ end }}
