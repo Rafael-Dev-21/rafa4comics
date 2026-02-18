@@ -15,14 +15,21 @@
 
   <figure class="comic-display">
     {{ $image := .Resources.GetMatch "page*" }}
-    {{ $webp := $image.Process "webp" }}
-    <img src="{{ $webp.RelPermalink }}"
-         alt="{{ .Params.alt_text | default .Title }}"
-         width="{{ $webp.Width }}"
-         height="{{ $webp.Height }}"
-         class="u-photo"
-         fetchpriority="high"
-         loading="eager">
+    {{ if $image }}
+      {{ $tiny := $image.Resize "500x webp" }}
+      {{ $small := $image.Resize "800x webp" }}
+      {{ $medium := $image.Resize "1200x webp" }}
+      {{ $large := $image.Process "webp" }}
+      <img src="{{ $large.RelPermalink }}"
+           srcset="{{ $tiny.RelPermalink }} 500w, {{ $small.RelPermalink }} 800w, {{ $medium.RelPermalink }} 1200w, {{ $large.RelPermalink }} {{ $large.Width }}w"
+           sizes="(max-width: 900px) 100vw, 900px"
+           alt="{{ .Params.alt_text | default .Title }}"
+           width="{{ $webp.Width }}"
+           height="{{ $webp.Height }}"
+           class="u-photo"
+           fetchpriority="high"
+           loading="eager">
+    {{ end }}
   </figure>
 
   <nav class="comic-nav" aria-label="Comic navigation">
