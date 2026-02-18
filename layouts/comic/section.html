@@ -1,7 +1,9 @@
+{{ define "head" }}
+  <link rel="alternate" hreflang="application/rss+xml" title="RSS Feed" href="index.xml">
+{{ end }}
 {{ define "main" }}
 <section class="h-feed">
   <h1>{{ .Title }}</h1>
-
 
   <ol class="comic-list" style="list-style: none; padding: 0;">
     {{ range .Pages }}
