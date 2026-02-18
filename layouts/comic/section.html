@@ -1,5 +1,18 @@
 {{ define "head" }}
   <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="index.xml">
+  <script type="application/ld+json">
+    "@context": "https://schema.org",
+    "@type": "ComicSeries",
+    "name": "{{ .Title }}",
+    "description": "{{ .Description }}",
+    "author": {
+      "@type": "Person",
+      "name": "Rafael 04th",
+      "url": "site.BaseURL"
+    },
+    "url": "{{ .Permalink }}"
+  }
+  </script>
 {{ end }}
 {{ define "main" }}
 <section class="h-feed">

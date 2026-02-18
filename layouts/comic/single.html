@@ -1,23 +1,38 @@
 {{ define "head" }}
   <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="../index.xml">
-{{ end }}
-{{ define "main" }}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "CreativeWorkSeries",
-    "name": "{{ .Parent.Title }}",
+    "@type": "ComicStory",
+    "name": "{{ .Title }}",
+    "headline": "{{ .Description }}",
+    "datePublished": "{{ .Date.Format "2006-01-02" }}",
     "author": {
       "@type": "Person",
-      "name": "Rafael 04th"
+      "name": "Rafael 04th",
+      "url": "{{ site.BaseURL }}"
     },
-    "headline": "{{ .Title }}",
-    {{ $image := .Resources.GetMatch "page*" }}
-    "image": "{{ if $image }}{{ ($image.Process "webp").Permalink }}{{ end }}",
-    "datePublished": "{{ .Date.Format "2006-01-02" }}",
-    "description": "{{ .Description | default .Summary }}"
+    {{- with .Params.genres }}"genre": {{ . | jsonify }},{{ end }},
+    "isPartOf": {
+      "@type": "ComicSeries",
+      "name": "{{ .Parent.Title }}",
+      "description": "{{ .Parent.Description }}",
+      "url": "{{ .Parent.Permalink }}"
+    },
+    {{ $image := .Resources.GetMatch "page*" -}}
+    {{ if $image -}}
+    "image": "{{ $image.Permalink }}",
+    {{- end }}
+    "character": [
+      {{ range $i, $e := .Params.characters }}{{ if $i }},{{ end }}{
+        "@type": "Person",
+        "name": "{{ $e }}"
+      }{{ end }}
+    ]
   }
   </script>
+{{ end }}
+{{ define "main" }}
 <main>
 <article class="h-entry">
   <header>
