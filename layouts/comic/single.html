@@ -13,7 +13,7 @@
       "url": "{{ site.BaseURL }}"
     },
     {{- with .Params.genres }}
-    "genre": {{ . | jsonify }},{{ end }}
+    "genre": {{ safeJS (printf "%s" (. | jsonify)) }},{{ end }}
     "isPartOf": {
       "@type": "ComicSeries",
       "name": "{{ .Parent.Title }}",
