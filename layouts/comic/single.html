@@ -12,7 +12,8 @@
       "name": "Rafael 04th"
     },
     "headline": "{{ .Title }}",
-    "image": "{{ ( .Resources.GetMatch "page*" ).Permalink }}",
+    {{ $image = .Resources.GetMatch "page*" }}
+    "image": "{{ if $image }}{{ ($image.Process "webp").Permalink }}{{ end }}",
     "datePublished": "{{ .Date.Format "2006-01-02" }}",
     "description": "{{ .Description | default .Summary }}"
   }

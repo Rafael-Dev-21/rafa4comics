@@ -6,18 +6,23 @@
     <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
     {{ $img := .Resources.GetMatch "page*" }}
     {{ if $img }}
-      <meta property="og:image" content="{{ $img.Permalink }}">
+      {{ $og_img := $img.Fill "1200x630 q70 jpg" }}
+      <meta property="og:image" content="{{ $og_img.Permalink }}">
+      <meta name="image" content="{{ $og_img.Permalink }}">
+      <meta name="twitter:image" content="{{ $og_image.Permalink }}">
       <meta name="twitter:card" content="summary_large_image">
     {{ else }}
       <meta name="twitter:card" content="summary">
     {{ end }}
-    <meta property="og:title" content="{{ .Title }}">
+    <meta property="og:title" content="{{ .Title }} | {{ site.Title }}">
+    <meta name="name" content="{{ .Title }} | {{ site.Title }}">
+    <meta name="twitter:title" content="{{ .Title }}">
     <meta property="og:url" content="{{ .Permalink }}">
     <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
-    {{ $summary := .Summary | plainify | truncate 160 }}
-    {{ $description := .Description | plainify }}
-    <meta name="description" content="{{ if .IsHome }}Rafael 4 Comics - Indie Sci-Fi/Fantasy Comics From a Brazilian Author{{ else }}{{ $description | default $summary }}{{ end }}">
+    {{ $summary := .Description | default .Summary | plainify | truncate 160 }}
+    <meta name="description" content="{{ if .IsHome }}Rafael 4 Comics - Indie Sci-Fi/Fantasy Comics From a Brazilian Author{{ else }}{{ $summary }}{{ end }}">
     <meta property="og:description" content="{{ $summary }}">
+    <meta name="twitter:description" content="{{ $summary }}">
 
     <link rel="profile" href="http://gmpg.org/xfn/11">
     <link href="mailto:victorrafaelpereiraalves0202@gmail.com" rel="me">
