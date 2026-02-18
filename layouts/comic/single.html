@@ -1,5 +1,5 @@
 {{ define "head" }}
-  <link rel="alternate" hreflang="application/rss+xml" title="RSS Feed" href="../index.xml">
+  <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="../index.xml">
 {{ end }}
 {{ define "main" }}
 <main>
@@ -38,7 +38,7 @@
   </nav>
 
   <footer>
-    <a href="../index.xml" rel="alternate" hreflang="application/xml+rss">Subscribe to RSS Feed</a>
+    <a href="../index.xml" rel="alternate" type="application/xml+rss">Subscribe to RSS Feed</a>
   {{ if .Params.comments }}
     {{ partial "disqus.html" . }}
   {{ end }}
