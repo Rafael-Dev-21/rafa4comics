@@ -12,7 +12,7 @@
 
   <figure class="comic-display">
     {{ $image := .Resources.GetMatch "page*" }}
-    <img src="{{ $image.Permalink }}"
+    <img src="{{ $image }}"
          alt="{{ .Params.alt_text | default .Title }}"
          class="u-photo"
          loading="eager">
