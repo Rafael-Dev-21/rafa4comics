@@ -24,8 +24,8 @@
            srcset="{{ $tiny.RelPermalink }} 500w, {{ $small.RelPermalink }} 800w, {{ $medium.RelPermalink }} 1200w, {{ $large.RelPermalink }} {{ $large.Width }}w"
            sizes="(max-width: 900px) 100vw, 900px"
            alt="{{ .Params.alt_text | default .Title }}"
-           width="{{ $webp.Width }}"
-           height="{{ $webp.Height }}"
+           width="{{ $large.Width }}"
+           height="{{ $large.Height }}"
            class="u-photo"
            fetchpriority="high"
            loading="eager">
