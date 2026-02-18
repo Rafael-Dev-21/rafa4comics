@@ -1,7 +1,10 @@
 ---
 title: 'When You Need Insurance...'
 date: 2026-03-03
+description: "Jump calls up insurance, but he didn't like th3 response..."
 params:
-  alt_text: "a figure floating in a tube. narration: \"my name is go jump junior. i am a galactic patrolman.\" view of the ship command room. narration: \"we're carried in stasis from star to star to solve problems.\"  the tube has oppened, jump is now fallen on wet ground, the alart BEEPS and screams: \"ALERT! ALERT!\". outside,  the ship has collided on a asteroid. narration: \"it's a simple job!\""
+  genres: ["Sci-Fi", "Comedy"]
+  characters: ["Captain Go Jump Jr.", "Joe from insurance", "Ship's AI"]
+  alt_text: "jump is in the middle of a call: \"hey, joe from insurance? hi! so, there was a asteroid in my way and-\". he then screams: \"what do you mean y'all don't cover this?!\". the ship's ai laughs on the background. jump continues: \"i pay 4.000.000 zekels monthly for this policy!!\""
   comments: true
 ---
