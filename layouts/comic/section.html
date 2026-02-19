@@ -16,7 +16,8 @@
 {{ end }}
 {{ define "main" }}
 <section class="h-feed">
-  <h1>{{ .Title }}</h1>
+  <h1 class="p-name">{{ .Title }}</h1>
+  <p class="p-summary">{{ .Description | default .Summary | plainify | truncate 160 | markdownify | safeHTML }}</p>
 
   <ol class="comic-list" style="list-style: none; padding: 0;">
     {{ range .Pages }}
@@ -25,7 +26,7 @@
         <h2>
           <a href="{{ .RelPermalink }}" class="u-url p-name">{{ .Title }}</a>
         </h2>
-        {{ if .Params.summary }}<p class="p-summary">{{ .Params.summary }}</p>{{ end }}
+        <p class="p-summary">{{ .Params.summary | default .Description | default .Summary | plainify | truncate 160 | markdownify | safeHTML }}</p>
       </article>
     </li>
     {{ end }}
