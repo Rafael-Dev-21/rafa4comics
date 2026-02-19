@@ -18,6 +18,7 @@
 <section class="h-feed">
   <h1 class="p-name">{{ .Title }}</h1>
   <p class="p-summary">{{ .Description | default .Summary | plainify | markdownify | safeHTML }}</p>
+  <p>By <a href="{{ site.BaseURL }}" rel="me" class="p-author h-card p-name-url">Rafael 04th</a></p>
 
   <ol class="comic-list" style="list-style: none; padding: 0;">
     {{ range .Pages }}
