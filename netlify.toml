@@ -6,10 +6,11 @@
   HUGO_VERSION = "0.155.3"
   HUGO_EXTENDED = "true"
 
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' unpkg.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: webmention.io *; connect-src 'self' webmention.io; font-src 'self'; frame-ancestors 'self' app://obsidian.md capacitor://localhost http://localhost:*;"
+
+#[[headers]]
+#  for = "/*"
+#  [headers.values]
+#    X-XSS-Protection = "1; mode=block"
+#    X-Content-Type-Options = "nosniff"
+#    Referrer-Policy = "strict-origin-when-cross-origin"
+#    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' unpkg.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: webmention.io *; connect-src 'self' webmention.io; font-src 'self'; frame-ancestors 'self' app://obsidian.md capacitor://localhost http://localhost:*;"
